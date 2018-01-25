@@ -12,8 +12,9 @@ class SearchPresenterImpl<T: SearchPresenter.FeaturedView>(private val getPhotos
 
     private var view: T? = null
 
-    override fun getPhotos(searchTag: String) {
+    override fun getPhotos(searchTag: String, localOffset: Int) {
         getPhotosUseCase.searchTag = searchTag
+        getPhotosUseCase.offset = localOffset
         getPhotosUseCase.executeObservable(object : Subscriber<PhotoResponse>() {
             override fun onCompleted() {
                 Log.i("onxFeaturedVideos", "connected")

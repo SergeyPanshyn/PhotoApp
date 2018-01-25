@@ -13,6 +13,6 @@ interface SearchPresenter<T>: Presenter<T> {
 
     }
 
-    fun getPhotos(searchTag: String)
+    fun getPhotos(searchTag: String, localOffset: Int)
 
 }

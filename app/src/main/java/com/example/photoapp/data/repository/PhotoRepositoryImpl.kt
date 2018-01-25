@@ -15,16 +15,16 @@ import rx.schedulers.Schedulers
 class PhotoRepositoryImpl(private val context: Context, private val photoApi: PhotoApi) : PhotoRepository {
 
     companion object {
-        val methodGetPhoto = "flickr.interestingness.getList"
+        val methodGetPhoto = "flickr.photos.search"
 
         val photoCount = 10
     }
 
-    override fun getPhotos(searchTag: String): Observable<PhotoResponse> {
+    override fun getPhotos(searchTag: String, offset: Int): Observable<PhotoResponse> {
         if (!context.isNetworkAvialable())
             return Observable.empty()
 
-        return photoApi.getPhotos(BuildConfig.FLICKR_API_KEY, methodGetPhoto, searchTag, photoCount, photoCount)
+        return photoApi.getPhotos(BuildConfig.FLICKR_API_KEY, methodGetPhoto, searchTag, photoCount, offset)
                 .subscribeOn(Schedulers.newThread())
     }
 

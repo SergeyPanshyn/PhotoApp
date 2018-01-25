@@ -9,6 +9,6 @@ import rx.Observable
 
 interface PhotoRepository {
 
-    fun getPhotos(searchTag: String): Observable<PhotoResponse>
+    fun getPhotos(searchTag: String, offset: Int): Observable<PhotoResponse>
 
 }

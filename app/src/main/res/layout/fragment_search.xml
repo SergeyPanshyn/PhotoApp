@@ -15,11 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="What's next?"
+            android:maxLines="1"
+            android:imeOptions="actionSearch"
             android:padding="15dp"
             />
 
     </android.support.v7.widget.CardView>
-
 
     <Button
         android:id="@+id/find_button"
@@ -38,17 +39,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/featured_progress_bar"
-
         android:visibility="visible"
         android:layout_below="@+id/et_card_view">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/featured_rv"
+            android:id="@+id/favor_tags_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/favor_tags_item"
+            tools:itemCount="1"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/photos_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/favor_tags_rv"
             tools:listitem="@layout/photo_item"
             tools:itemCount="5"/>
 
+        </RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
