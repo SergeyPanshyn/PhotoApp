@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/profile"/>
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/user_img"
+                android:layout_alignTop="@+id/user_img"
+                android:layout_alignBottom="@+id/user_img"
+                android:textColor="@color/grey"
+                tools:text="Jack Sparrow"/>
+
+            <ImageView
+                android:id="@+id/main_img"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/example"
+                android:scaleType="centerCrop"
+                android:layout_below="@+id/user_img"/>
+
+            <TextView
+                android:id="@+id/photo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/main_img"
+                android:layout_margin="10dp"
+                android:textColor="@color/grey"
+                tools:text="Photo Name"/>
+
+            <View
+                android:id="@+id/limit_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/photo_name"
+                android:background="@color/greyLight"/>
+
+            <TextView
+                android:id="@+id/faves_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/greyLight"
+                android:textSize="10sp"
+                android:text="5.4K Faves"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@+id/limit_line"/>
+
+            <TextView
+                android:id="@+id/comments_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/greyLight"
+                android:textSize="10sp"
+                android:text="199 Comments"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_below="@+id/limit_line"
+                android:layout_toEndOf="@+id/faves_count"/>
+
+            <TextView
+                android:id="@+id/views_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/greyLight"
+                android:textSize="10sp"
+                android:text="3,555,456 views"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_below="@+id/limit_line"
+                android:layout_toEndOf="@+id/comments_count"/>
+
+            <ImageView
+                android:id="@+id/share_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/share_button_drawable"
+                android:layout_below="@+id/limit_line"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_alignParentEnd="true"/>
+
+            <ImageView
+                android:id="@+id/comment_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/comment_button_drawable"
+                android:layout_below="@+id/limit_line"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="8dp"
+               android:layout_toStartOf="@+id/share_button"
+                />
+
+            <ImageView
+                android:id="@+id/star_button"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/star_button_drawable"
+                android:layout_below="@+id/limit_line"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_toStartOf="@+id/comment_button"/>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

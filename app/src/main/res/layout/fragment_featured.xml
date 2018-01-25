@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/greyLight">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/et_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/search_et"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="What's next?"
+            android:padding="15dp"
+            />
+
+    </android.support.v7.widget.CardView>
+
+
+    <Button
+        android:id="@+id/find_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Let's find somthing interesting"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/grey"
+        android:visibility="gone"
+        android:padding="20dp"/>
+    
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pull_to_refresh_featured"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/featured_progress_bar"
+
+        android:visibility="visible"
+        android:layout_below="@+id/et_card_view">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/featured_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/photo_item"
+            tools:itemCount="5"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/featured_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_chevron_up_white_24dp"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        />
+
+
+    <ProgressBar
+        android:layout_alignParentBottom="true"
+        android:id="@+id/featured_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>
