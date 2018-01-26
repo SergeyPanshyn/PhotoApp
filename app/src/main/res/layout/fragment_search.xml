@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/greyLight">
@@ -9,6 +8,7 @@
         android:id="@+id/et_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/search_et"
             android:background="@color/white"
@@ -17,8 +17,7 @@
             android:hint="What's next?"
             android:maxLines="1"
             android:imeOptions="actionSearch"
-            android:padding="15dp"
-            />
+            android:padding="15dp"/>
 
     </android.support.v7.widget.CardView>
 
@@ -33,34 +32,21 @@
         android:visibility="gone"
         android:padding="20dp"/>
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/favor_tags_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/favor_tags_item"
         tools:itemCount="1"
-        android:layout_below="@+id/et_card_view"
+        android:layout_below="@+id/et_card_view" />
 
-        />
-    
-    <android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pull_to_refresh_featured"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/photos_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/featured_progress_bar"
-        android:visibility="visible"
-        android:layout_below="@+id/favor_tags_rv">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/photos_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/photo_item"
-            tools:itemCount="5"/>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/favor_tags_rv"
+        tools:listitem="@layout/photo_item"
+        tools:itemCount="5"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/featured_fab"
@@ -74,7 +60,6 @@
         tools:visibility="visible"
         />
 
-
     <ProgressBar
         android:layout_alignParentBottom="true"
         android:id="@+id/featured_progress_bar"
@@ -84,6 +69,5 @@
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
-
 
 </RelativeLayout>
