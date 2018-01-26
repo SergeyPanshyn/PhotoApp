@@ -152,7 +152,7 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView {
                     if (!recyclerView!!.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
                         if (couldLoadMore) {
                             localOffset += 1
-                            featuredProgressBar.visibility = View.VISIBLE
+//                            featuredProgressBar.visibility = View.VISIBLE
                             callGetPhotos()
                         }
                     }
