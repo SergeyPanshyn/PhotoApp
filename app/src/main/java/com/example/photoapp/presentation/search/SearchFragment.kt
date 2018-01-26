@@ -3,7 +3,6 @@ package com.example.photoapp.presentation.search
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.KeyEvent
@@ -30,16 +29,30 @@ import javax.inject.Inject
 /**
  * Created by Sergey Panshyn on 03.11.2017.
  */
-class SearchFragment : Fragment(), SearchPresenter.FeaturedView {
+class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListener.OnScrollListenerCallback {
+    override fun onScrollingDown() {
+        featuredFab.hide()
+    }
+
+    override fun onScrollingUp() {
+        featuredFab.show()
+        if (layoutManager!!.findFirstCompletelyVisibleItemPosition() == 0) {
+            featuredFab.hide()
+        }
+    }
+
+    override fun onScrolledTillTheEnd() {
+        if (couldLoadMore) {
+            localOffset += 1
+            callGetPhotos()
+        }
+    }
 
     @BindView(R.id.photos_rv)
     lateinit var photosRv: RecyclerView
 
     @BindView(R.id.favor_tags_rv)
     lateinit var favorTagsRv: RecyclerView
-
-    @BindView(R.id.pull_to_refresh_featured)
-    lateinit var pullToRefreshFeatured: SwipeRefreshLayout
 
     @BindView(R.id.featured_progress_bar)
     lateinit var featuredProgressBar: ProgressBar
@@ -65,10 +78,6 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView {
 
     var layoutManager: LinearLayoutManager? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val fragment = inflater.inflate(R.layout.fragment_search, container, false)
 
@@ -84,20 +93,12 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView {
             override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent?): Boolean {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     localTag = searchEt.text.toString()
-                    cancelAllVariables()
-                    initPhotosRecyclerView()
                     callGetPhotos()
                     return true
                 }
                 return false
             }
         })
-
-        pullToRefreshFeatured.setOnRefreshListener {
-            cancelAllVariables()
-            initPhotosRecyclerView()
-            callGetPhotos()
-        }
 
         featuredFab.setOnClickListener{
             photosRv.smoothScrollToPosition(0)
@@ -144,30 +145,10 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView {
         photoAdapter = PhotoAdapter(context!!, recycleAdapterList)
         photosRv.adapter = photoAdapter
 
-        photosRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0) {
-                    featuredFab.hide()
-                    if (!recyclerView!!.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
-                        if (couldLoadMore) {
-                            localOffset += 1
-//                            featuredProgressBar.visibility = View.VISIBLE
-                            callGetPhotos()
-                        }
-                    }
-                } else if (dy<0) {
-                    featuredFab.show()
-                    if (layoutManager!!.findFirstCompletelyVisibleItemPosition() == 0) {
-                        featuredFab.hide()
-                    }
-                }
-            }
-        })
+        photosRv.addOnScrollListener(OnScrollListener(this))
     }
 
     private fun setLoadedView() {
-        pullToRefreshFeatured.isRefreshing = false
         couldLoadMore = true
         featuredProgressBar.visibility = View.GONE
     }
