@@ -1,5 +1,6 @@
 package com.example.photoapp.presentation.search.adapter
 
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
@@ -15,6 +16,9 @@ class PhotoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     @BindView(R.id.user_img)
     lateinit var userIv: ImageView
+
+    @BindView(R.id.root_cv)
+    lateinit var rootCv: CardView
 
     @BindView(R.id.user_name)
     lateinit var userNameTv: TextView
@@ -45,6 +49,12 @@ class PhotoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     init {
         ButterKnife.bind(this, itemView)
+
+        rootCv.setOnClickListener {  }
+
+        shareButton.setOnClickListener {  }
+        commentButton.setOnClickListener {  }
+        starButton.setOnClickListener {  }
     }
 
 }
