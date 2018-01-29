@@ -3,6 +3,7 @@ package com.example.photoapp.data.repository
 import android.content.Context
 import com.example.photoapp.BuildConfig
 import com.example.photoapp.data.api.PhotoApi
+import com.example.photoapp.data.api.models.PhotoItemResponse
 import com.example.photoapp.data.api.models.PhotoResponse
 import com.example.photoapp.extention.isNetworkAvialable
 import rx.Observable
@@ -15,7 +16,9 @@ import rx.schedulers.Schedulers
 class PhotoRepositoryImpl(private val context: Context, private val photoApi: PhotoApi) : PhotoRepository {
 
     companion object {
-        val methodGetPhoto = "flickr.photos.search"
+        val methodGetPhotos = "flickr.photos.search"
+
+        val methodGetPhotoInfo = "flickr.photos.getInfo"
 
         val photoCount = 10
     }
@@ -24,8 +27,13 @@ class PhotoRepositoryImpl(private val context: Context, private val photoApi: Ph
         if (!context.isNetworkAvialable())
             return Observable.empty()
 
-        return photoApi.getPhotos(BuildConfig.FLICKR_API_KEY, methodGetPhoto, searchTag, photoCount, offset)
+        return photoApi.getPhotos(BuildConfig.FLICKR_API_KEY, methodGetPhotos, searchTag, photoCount, offset)
                 .subscribeOn(Schedulers.newThread())
+    }
+
+    private fun getPhotoInfo(photoId: String): PhotoItemResponse {
+        return photoApi.getPhotoInfo(BuildConfig.FLICKR_API_KEY, methodGetPhotoInfo, photoId)
+                .toBlocking().first()
     }
 
 }

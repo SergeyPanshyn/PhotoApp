@@ -2,7 +2,10 @@ package com.example.photoapp.data.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PhotoResponse {
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
+public class PhotoResponse{
 
 	@SerializedName("stat")
 	private String stat;
@@ -29,7 +32,7 @@ public class PhotoResponse {
 	@Override
  	public String toString(){
 		return 
-			"PhotoResponse{" +
+			"PhotoResponse{" + 
 			"stat = '" + stat + '\'' + 
 			",photos = '" + photos + '\'' + 
 			"}";

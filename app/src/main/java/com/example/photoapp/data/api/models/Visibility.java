@@ -1,19 +1,8 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
 public class Visibility{
-
-	@SerializedName("ispublic")
 	private int ispublic;
-
-	@SerializedName("isfriend")
 	private int isfriend;
-
-	@SerializedName("isfamily")
 	private int isfamily;
 
 	public void setIspublic(int ispublic){

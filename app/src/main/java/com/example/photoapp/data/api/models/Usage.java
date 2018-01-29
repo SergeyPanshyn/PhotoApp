@@ -1,22 +1,9 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
 public class Usage{
-
-	@SerializedName("canshare")
 	private int canshare;
-
-	@SerializedName("canprint")
 	private int canprint;
-
-	@SerializedName("canblog")
 	private int canblog;
-
-	@SerializedName("candownload")
 	private int candownload;
 
 	public void setCanshare(int canshare){

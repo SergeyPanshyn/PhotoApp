@@ -1,16 +1,7 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
-public class PhotoInfoModel{
-
-	@SerializedName("stat")
+public class PhotoItemResponse{
 	private String stat;
-
-	@SerializedName("photo")
 	private Photo photo;
 
 	public void setStat(String stat){
@@ -32,7 +23,7 @@ public class PhotoInfoModel{
 	@Override
  	public String toString(){
 		return 
-			"PhotoInfoModel{" + 
+			"PhotoItemResponse{" + 
 			"stat = '" + stat + '\'' + 
 			",photo = '" + photo + '\'' + 
 			"}";

@@ -1,20 +1,13 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
 public class Comments{
+	private int content;
 
-	@SerializedName("_content")
-	private String content;
-
-	public void setContent(String content){
+	public void setContent(int content){
 		this.content = content;
 	}
 
-	public String getContent(){
+	public int getContent(){
 		return content;
 	}
 

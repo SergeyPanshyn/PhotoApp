@@ -2,6 +2,9 @@ package com.example.photoapp.data.api.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.annotation.Generated;
+
+@Generated("com.robohorse.robopojogenerator")
 public class PhotoItem{
 
 	@SerializedName("owner")
@@ -30,6 +33,12 @@ public class PhotoItem{
 
 	@SerializedName("isfamily")
 	private int isfamily;
+
+	private static final String IMAGE_URL = "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg";
+
+	public String getImageUrl() {
+		return String.format(IMAGE_URL, farm, server, id, secret);
+	}
 
 	public void setOwner(String owner){
 		this.owner = owner;
@@ -118,9 +127,4 @@ public class PhotoItem{
 			",isfamily = '" + isfamily + '\'' + 
 			"}";
 		}
-	private static final String IMAGE_URL = "https://farm%s.staticflickr.com/%s/%s_%s_%s.jpg";
-
-	public String getImageUrl() {
-		return String.format(IMAGE_URL, farm, server, id, secret, "z");
-	}
 }

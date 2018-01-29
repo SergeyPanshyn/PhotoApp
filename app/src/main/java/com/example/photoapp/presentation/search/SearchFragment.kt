@@ -32,12 +32,17 @@ import javax.inject.Inject
 class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListener.OnScrollListenerCallback {
     override fun onScrollingDown() {
         featuredFab.hide()
+
+//        if (layoutManager!!.findFirstCompletelyVisibleItemPosition() != 0) {
+//            favorTagsRv.visibility = View.GONE
+//        }
     }
 
     override fun onScrollingUp() {
         featuredFab.show()
         if (layoutManager!!.findFirstCompletelyVisibleItemPosition() == 0) {
             featuredFab.hide()
+//            favorTagsRv.visibility = View.VISIBLE
         }
     }
 
@@ -68,7 +73,7 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListene
 
     private var photoAdapter: PhotoAdapter? = null
 
-    var localOffset = 0
+    var localOffset = 1
 
     var localTag = "interesting"
 

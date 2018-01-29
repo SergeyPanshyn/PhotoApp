@@ -1,16 +1,7 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
 public class UrlItem{
-
-	@SerializedName("type")
 	private String type;
-
-	@SerializedName("_content")
 	private String content;
 
 	public void setType(String type){

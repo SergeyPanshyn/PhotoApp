@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import javax.annotation.Generated;
 
+@Generated("com.robohorse.robopojogenerator")
 public class Photos{
 
 	@SerializedName("perpage")
@@ -14,7 +16,7 @@ public class Photos{
 	private String total;
 
 	@SerializedName("pages")
-	private int pages;
+	private String pages;
 
 	@SerializedName("photo")
 	private List<PhotoItem> photo;
@@ -38,11 +40,11 @@ public class Photos{
 		return total;
 	}
 
-	public void setPages(int pages){
+	public void setPages(String pages){
 		this.pages = pages;
 	}
 
-	public int getPages(){
+	public String getPages(){
 		return pages;
 	}
 

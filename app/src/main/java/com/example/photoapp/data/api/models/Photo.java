@@ -1,89 +1,38 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
 public class Photo{
-
-	@SerializedName("server")
+	private Owner owner;
 	private String server;
-
-	@SerializedName("dateuploaded")
 	private String dateuploaded;
-
-	@SerializedName("notes")
+	private Comments comments;
 	private Notes notes;
-
-	@SerializedName("safety_level")
-	private String safetyLevel;
-
-	@SerializedName("usage")
+	private Visibility visibility;
+	private Publiceditability publiceditability;
+	private int safetyLevel;
+	private int rotation;
 	private Usage usage;
-
-	@SerializedName("description")
 	private Description description;
-
-	@SerializedName("secret")
+	private Dates dates;
 	private String secret;
-
-	@SerializedName("media")
 	private String media;
-
-	@SerializedName("title")
 	private Title title;
-
-	@SerializedName("urls")
+	private People people;
+	private Tags tags;
+	private int license;
 	private Urls urls;
-
-	@SerializedName("editability")
 	private Editability editability;
-
-	@SerializedName("originalsecret")
-	private String originalsecret;
-
-	@SerializedName("farm")
 	private int farm;
-
-	@SerializedName("id")
+	private int isfavorite;
 	private String id;
-
-	@SerializedName("views")
 	private String views;
 
-	@SerializedName("owner")
-	private Owner owner;
+	public void setOwner(Owner owner){
+		this.owner = owner;
+	}
 
-	@SerializedName("comments")
-	private Comments comments;
-
-	@SerializedName("visibility")
-	private Visibility visibility;
-
-	@SerializedName("publiceditability")
-	private Publiceditability publiceditability;
-
-	@SerializedName("rotation")
-	private int rotation;
-
-	@SerializedName("dates")
-	private Dates dates;
-
-	@SerializedName("people")
-	private People people;
-
-	@SerializedName("tags")
-	private Tags tags;
-
-	@SerializedName("license")
-	private String license;
-
-	@SerializedName("originalformat")
-	private String originalformat;
-
-	@SerializedName("isfavorite")
-	private int isfavorite;
+	public Owner getOwner(){
+		return owner;
+	}
 
 	public void setServer(String server){
 		this.server = server;
@@ -101,6 +50,14 @@ public class Photo{
 		return dateuploaded;
 	}
 
+	public void setComments(Comments comments){
+		this.comments = comments;
+	}
+
+	public Comments getComments(){
+		return comments;
+	}
+
 	public void setNotes(Notes notes){
 		this.notes = notes;
 	}
@@ -109,12 +66,36 @@ public class Photo{
 		return notes;
 	}
 
-	public void setSafetyLevel(String safetyLevel){
+	public void setVisibility(Visibility visibility){
+		this.visibility = visibility;
+	}
+
+	public Visibility getVisibility(){
+		return visibility;
+	}
+
+	public void setPubliceditability(Publiceditability publiceditability){
+		this.publiceditability = publiceditability;
+	}
+
+	public Publiceditability getPubliceditability(){
+		return publiceditability;
+	}
+
+	public void setSafetyLevel(int safetyLevel){
 		this.safetyLevel = safetyLevel;
 	}
 
-	public String getSafetyLevel(){
+	public int getSafetyLevel(){
 		return safetyLevel;
+	}
+
+	public void setRotation(int rotation){
+		this.rotation = rotation;
+	}
+
+	public int getRotation(){
+		return rotation;
 	}
 
 	public void setUsage(Usage usage){
@@ -131,6 +112,14 @@ public class Photo{
 
 	public Description getDescription(){
 		return description;
+	}
+
+	public void setDates(Dates dates){
+		this.dates = dates;
+	}
+
+	public Dates getDates(){
+		return dates;
 	}
 
 	public void setSecret(String secret){
@@ -157,6 +146,30 @@ public class Photo{
 		return title;
 	}
 
+	public void setPeople(People people){
+		this.people = people;
+	}
+
+	public People getPeople(){
+		return people;
+	}
+
+	public void setTags(Tags tags){
+		this.tags = tags;
+	}
+
+	public Tags getTags(){
+		return tags;
+	}
+
+	public void setLicense(int license){
+		this.license = license;
+	}
+
+	public int getLicense(){
+		return license;
+	}
+
 	public void setUrls(Urls urls){
 		this.urls = urls;
 	}
@@ -173,20 +186,20 @@ public class Photo{
 		return editability;
 	}
 
-	public void setOriginalsecret(String originalsecret){
-		this.originalsecret = originalsecret;
-	}
-
-	public String getOriginalsecret(){
-		return originalsecret;
-	}
-
 	public void setFarm(int farm){
 		this.farm = farm;
 	}
 
 	public int getFarm(){
 		return farm;
+	}
+
+	public void setIsfavorite(int isfavorite){
+		this.isfavorite = isfavorite;
+	}
+
+	public int getIsfavorite(){
+		return isfavorite;
 	}
 
 	public void setId(String id){
@@ -205,124 +218,34 @@ public class Photo{
 		return views;
 	}
 
-	public void setOwner(Owner owner){
-		this.owner = owner;
-	}
-
-	public Owner getOwner(){
-		return owner;
-	}
-
-	public void setComments(Comments comments){
-		this.comments = comments;
-	}
-
-	public Comments getComments(){
-		return comments;
-	}
-
-	public void setVisibility(Visibility visibility){
-		this.visibility = visibility;
-	}
-
-	public Visibility getVisibility(){
-		return visibility;
-	}
-
-	public void setPubliceditability(Publiceditability publiceditability){
-		this.publiceditability = publiceditability;
-	}
-
-	public Publiceditability getPubliceditability(){
-		return publiceditability;
-	}
-
-	public void setRotation(int rotation){
-		this.rotation = rotation;
-	}
-
-	public int getRotation(){
-		return rotation;
-	}
-
-	public void setDates(Dates dates){
-		this.dates = dates;
-	}
-
-	public Dates getDates(){
-		return dates;
-	}
-
-	public void setPeople(People people){
-		this.people = people;
-	}
-
-	public People getPeople(){
-		return people;
-	}
-
-	public void setTags(Tags tags){
-		this.tags = tags;
-	}
-
-	public Tags getTags(){
-		return tags;
-	}
-
-	public void setLicense(String license){
-		this.license = license;
-	}
-
-	public String getLicense(){
-		return license;
-	}
-
-	public void setOriginalformat(String originalformat){
-		this.originalformat = originalformat;
-	}
-
-	public String getOriginalformat(){
-		return originalformat;
-	}
-
-	public void setIsfavorite(int isfavorite){
-		this.isfavorite = isfavorite;
-	}
-
-	public int getIsfavorite(){
-		return isfavorite;
-	}
-
 	@Override
  	public String toString(){
 		return 
 			"Photo{" + 
-			"server = '" + server + '\'' + 
+			"owner = '" + owner + '\'' + 
+			",server = '" + server + '\'' + 
 			",dateuploaded = '" + dateuploaded + '\'' + 
+			",comments = '" + comments + '\'' + 
 			",notes = '" + notes + '\'' + 
+			",visibility = '" + visibility + '\'' + 
+			",publiceditability = '" + publiceditability + '\'' + 
 			",safety_level = '" + safetyLevel + '\'' + 
+			",rotation = '" + rotation + '\'' + 
 			",usage = '" + usage + '\'' + 
 			",description = '" + description + '\'' + 
+			",dates = '" + dates + '\'' + 
 			",secret = '" + secret + '\'' + 
 			",media = '" + media + '\'' + 
 			",title = '" + title + '\'' + 
-			",urls = '" + urls + '\'' + 
-			",editability = '" + editability + '\'' + 
-			",originalsecret = '" + originalsecret + '\'' + 
-			",farm = '" + farm + '\'' + 
-			",id = '" + id + '\'' + 
-			",views = '" + views + '\'' + 
-			",owner = '" + owner + '\'' + 
-			",comments = '" + comments + '\'' + 
-			",visibility = '" + visibility + '\'' + 
-			",publiceditability = '" + publiceditability + '\'' + 
-			",rotation = '" + rotation + '\'' + 
-			",dates = '" + dates + '\'' + 
 			",people = '" + people + '\'' + 
 			",tags = '" + tags + '\'' + 
 			",license = '" + license + '\'' + 
-			",originalformat = '" + originalformat + '\'' + 
+			",urls = '" + urls + '\'' + 
+			",editability = '" + editability + '\'' + 
+			",farm = '" + farm + '\'' + 
 			",isfavorite = '" + isfavorite + '\'' + 
+			",id = '" + id + '\'' + 
+			",views = '" + views + '\'' + 
 			"}";
 		}
 }

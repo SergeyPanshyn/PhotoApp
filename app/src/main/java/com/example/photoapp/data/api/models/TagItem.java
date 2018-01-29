@@ -1,27 +1,11 @@
 package com.example.photoapp.data.api.models;
 
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
-
-@Generated("com.robohorse.robopojogenerator")
 public class TagItem{
-
-	@SerializedName("author")
 	private String author;
-
-	@SerializedName("machine_tag")
-	private boolean machineTag;
-
-	@SerializedName("authorname")
+	private String machineTag;
 	private String authorname;
-
-	@SerializedName("raw")
 	private String raw;
-
-	@SerializedName("id")
 	private String id;
-
-	@SerializedName("_content")
 	private String content;
 
 	public void setAuthor(String author){
@@ -32,11 +16,11 @@ public class TagItem{
 		return author;
 	}
 
-	public void setMachineTag(boolean machineTag){
+	public void setMachineTag(String machineTag){
 		this.machineTag = machineTag;
 	}
 
-	public boolean isMachineTag(){
+	public String getMachineTag(){
 		return machineTag;
 	}
 

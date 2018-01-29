@@ -1,25 +1,10 @@
 package com.example.photoapp.data.api.models;
 
-import com.google.gson.annotations.SerializedName;
-
-import javax.annotation.Generated;
-
-@Generated("com.robohorse.robopojogenerator")
 public class Dates{
-
-	@SerializedName("taken")
 	private String taken;
-
-	@SerializedName("takengranularity")
 	private int takengranularity;
-
-	@SerializedName("lastupdate")
 	private String lastupdate;
-
-	@SerializedName("takenunknown")
-	private String takenunknown;
-
-	@SerializedName("posted")
+	private int takenunknown;
 	private String posted;
 
 	public void setTaken(String taken){
@@ -46,11 +31,11 @@ public class Dates{
 		return lastupdate;
 	}
 
-	public void setTakenunknown(String takenunknown){
+	public void setTakenunknown(int takenunknown){
 		this.takenunknown = takenunknown;
 	}
 
-	public String getTakenunknown(){
+	public int getTakenunknown(){
 		return takenunknown;
 	}
 

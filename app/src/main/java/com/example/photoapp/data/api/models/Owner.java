@@ -1,30 +1,12 @@
 package com.example.photoapp.data.api.models;
 
-import javax.annotation.Generated;
-import com.google.gson.annotations.SerializedName;
-
-@Generated("com.robohorse.robopojogenerator")
 public class Owner{
-
-	@SerializedName("nsid")
 	private String nsid;
-
-	@SerializedName("iconfarm")
 	private int iconfarm;
-
-	@SerializedName("path_alias")
-	private Object pathAlias;
-
-	@SerializedName("iconserver")
+	private String pathAlias;
 	private String iconserver;
-
-	@SerializedName("location")
 	private String location;
-
-	@SerializedName("username")
 	private String username;
-
-	@SerializedName("realname")
 	private String realname;
 
 	public void setNsid(String nsid){
@@ -43,11 +25,11 @@ public class Owner{
 		return iconfarm;
 	}
 
-	public void setPathAlias(Object pathAlias){
+	public void setPathAlias(String pathAlias){
 		this.pathAlias = pathAlias;
 	}
 
-	public Object getPathAlias(){
+	public String getPathAlias(){
 		return pathAlias;
 	}
 
