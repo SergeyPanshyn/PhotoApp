@@ -12,7 +12,7 @@ import com.example.photoapp.R
 /**
  * Created by Sergey Panshyn on 03.11.2017.
  */
-class PhotoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class PhotoViewHolder(itemView: View, itemClickListener: View.OnClickListener): RecyclerView.ViewHolder(itemView) {
 
     @BindView(R.id.user_img)
     lateinit var userIv: ImageView
@@ -50,7 +50,10 @@ class PhotoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     init {
         ButterKnife.bind(this, itemView)
 
-        rootCv.setOnClickListener {  }
+        rootCv.setOnClickListener {
+            it.tag = adapterPosition
+            itemClickListener.onClick(it)
+        }
 
         shareButton.setOnClickListener {  }
         commentButton.setOnClickListener {  }

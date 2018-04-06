@@ -1,6 +1,7 @@
 package com.example.photoapp.presentation.search.di
 
 import com.example.photoapp.data.repository.PhotoRepository
+import com.example.photoapp.domain.photos.GetPhotoInfoUseCase
 import com.example.photoapp.domain.photos.GetPhotosUseCase
 import com.example.photoapp.domain.schedulers.ObserveOn
 import com.example.photoapp.domain.schedulers.SubscribeOn
@@ -18,10 +19,15 @@ class SearchModule {
 
     @Provides
     @PerActivity
-    fun provideFeaturedPresenter(getPhotosUseCase: GetPhotosUseCase): SearchPresenter<SearchPresenter.FeaturedView> = SearchPresenterImpl(getPhotosUseCase)
+    fun provideFeaturedPresenter(getPhotosUseCase: GetPhotosUseCase,
+                                 getPhotoInfoUseCase: GetPhotoInfoUseCase): SearchPresenter<SearchPresenter.FeaturedView> = SearchPresenterImpl(getPhotosUseCase, getPhotoInfoUseCase)
 
     @Provides
     @PerActivity
-    fun provideGetFeaturedVideosUseCase(subscribeOn: SubscribeOn, observeOn: ObserveOn, photoRepository: PhotoRepository) = GetPhotosUseCase(subscribeOn, observeOn, photoRepository)
+    fun provideGetPhotosUseCase(subscribeOn: SubscribeOn, observeOn: ObserveOn, photoRepository: PhotoRepository) = GetPhotosUseCase(subscribeOn, observeOn, photoRepository)
+
+    @Provides
+    @PerActivity
+    fun provideGetPhotoInfoUseCase(subscribeOn: SubscribeOn, observeOn: ObserveOn, photoRepository: PhotoRepository) = GetPhotoInfoUseCase(observeOn, subscribeOn, photoRepository)
 
 }

@@ -18,13 +18,12 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.example.photoapp.R
 import com.example.photoapp.data.api.models.PhotoItem
+import com.example.photoapp.data.api.models.PhotoItemResponse
 import com.example.photoapp.data.api.models.PhotoResponse
 import com.example.photoapp.presentation.main.MainActivity
 import com.example.photoapp.presentation.search.adapter.PhotoAdapter
 import com.example.photoapp.presentation.search.adapter_favor.FavorAdapter
 import javax.inject.Inject
-
-
 
 /**
  * Created by Sergey Panshyn on 03.11.2017.
@@ -34,7 +33,7 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListene
         featuredFab.hide()
 
 //        if (layoutManager!!.findFirstCompletelyVisibleItemPosition() != 0) {
-//            favorTagsRv.visibility = View.GONE
+            favorTagsRv.visibility = View.GONE
 //        }
     }
 
@@ -42,7 +41,7 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListene
         featuredFab.show()
         if (layoutManager!!.findFirstCompletelyVisibleItemPosition() == 0) {
             featuredFab.hide()
-//            favorTagsRv.visibility = View.VISIBLE
+            favorTagsRv.visibility = View.VISIBLE
         }
     }
 
@@ -70,6 +69,14 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListene
 
     @Inject
     lateinit var searchPresenter: SearchPresenter<SearchPresenter.FeaturedView>
+
+    private val searchFragmentListener by lazy { activity as SearchFragment.SearchFragmentListener }
+
+    interface SearchFragmentListener {
+
+        fun onPhotoItemClick(photoItemResponse: PhotoItemResponse)
+
+    }
 
     private var photoAdapter: PhotoAdapter? = null
 
@@ -124,6 +131,10 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListene
         setLoadedView()
     }
 
+    override fun showPhotoInfo(photoItemResponse: PhotoItemResponse) {
+        searchFragmentListener.onPhotoItemClick(photoItemResponse)
+    }
+
     private fun callGetPhotos() {
         couldLoadMore = false
         searchPresenter.getPhotos(localTag, localOffset)
@@ -147,7 +158,10 @@ class SearchFragment : Fragment(), SearchPresenter.FeaturedView, OnScrollListene
         layoutManager = LinearLayoutManager(context)
         photosRv.layoutManager = layoutManager
 
-        photoAdapter = PhotoAdapter(context!!, recycleAdapterList)
+        photoAdapter = PhotoAdapter(context!!, recycleAdapterList,
+                View.OnClickListener {
+                    searchPresenter.getPhotoInfo(recycleAdapterList[it.tag as Int].id)
+                })
         photosRv.adapter = photoAdapter
 
         photosRv.addOnScrollListener(OnScrollListener(this))

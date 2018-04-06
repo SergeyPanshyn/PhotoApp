@@ -1,5 +1,6 @@
 package com.example.photoapp.presentation.search
 
+import com.example.photoapp.data.api.models.PhotoItemResponse
 import com.example.photoapp.data.api.models.PhotoResponse
 import com.example.photoapp.presentation.Presenter
 
@@ -11,8 +12,12 @@ interface SearchPresenter<T>: Presenter<T> {
 
         fun showPhotos(photoResponse: PhotoResponse)
 
+        fun showPhotoInfo(photoItemResponse: PhotoItemResponse)
+
     }
 
     fun getPhotos(searchTag: String, localOffset: Int)
+
+    fun getPhotoInfo(photoId: String)
 
 }

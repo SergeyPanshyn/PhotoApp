@@ -31,9 +31,12 @@ class PhotoRepositoryImpl(private val context: Context, private val photoApi: Ph
                 .subscribeOn(Schedulers.newThread())
     }
 
-    private fun getPhotoInfo(photoId: String): PhotoItemResponse {
+    override fun getPhotoInfo(photoId: String): Observable<PhotoItemResponse> {
+        if (!context.isNetworkAvialable())
+            return Observable.empty()
+
         return photoApi.getPhotoInfo(BuildConfig.FLICKR_API_KEY, methodGetPhotoInfo, photoId)
-                .toBlocking().first()
+                .subscribeOn(Schedulers.newThread())
     }
 
 }

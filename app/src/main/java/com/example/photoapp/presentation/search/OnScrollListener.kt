@@ -7,17 +7,17 @@ import android.support.v7.widget.RecyclerView
  */
 class OnScrollListener(val context: SearchFragment): RecyclerView.OnScrollListener() {
 
-    private val presetListListener by lazy { context as OnScrollListener.OnScrollListenerCallback }
+    private val scrollListener by lazy { context as OnScrollListener.OnScrollListenerCallback }
 
     override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
         if (dy > 0) {
-            presetListListener.onScrollingDown()
+            scrollListener.onScrollingDown()
             if (!recyclerView!!.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
-                presetListListener.onScrolledTillTheEnd()
+                scrollListener.onScrolledTillTheEnd()
             }
         } else if (dy<0) {
-            presetListListener.onScrollingUp()
+            scrollListener.onScrollingUp()
         }
     }
 

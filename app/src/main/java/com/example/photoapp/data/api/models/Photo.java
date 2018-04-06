@@ -26,6 +26,12 @@ public class Photo{
 	private String id;
 	private String views;
 
+	private static final String IMAGE_URL = "https://farm%s.staticflickr.com/%s/%s_%s_z.jpg";
+
+	public String getImageUrl() {
+		return String.format(IMAGE_URL, farm, server, id, secret);
+	}
+
 	public void setOwner(Owner owner){
 		this.owner = owner;
 	}
